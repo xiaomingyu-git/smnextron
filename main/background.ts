@@ -1,4 +1,4 @@
-import { app } from 'electron';
+import {app, ipcMain, shell} from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 
@@ -14,10 +14,13 @@ if (isProd) {
   await app.whenReady();
 
   const mainWindow = createWindow('main', {
-    width: 1000,
-    height: 600,
+    autoHideMenuBar:true, webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      webSecurity: false
+    }
   });
-
+  mainWindow.maximize()
   if (isProd) {
     await mainWindow.loadURL('app://./home.html');
   } else {
@@ -30,3 +33,7 @@ if (isProd) {
 app.on('window-all-closed', () => {
   app.quit();
 });
+
+ipcMain.on('openfile',(event,args)=>{
+  shell.openPath(args)
+})
