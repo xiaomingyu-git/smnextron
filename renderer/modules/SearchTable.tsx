@@ -5,14 +5,25 @@ import {DatePicker} from '@mantine/dates';
 import 'dayjs/locale/zh-cn';
 import dayjs from 'dayjs';
 
+const utc =require('dayjs/plugin/utc')
+const timezone = require('dayjs/plugin/timezone')
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 export function SearchTable() {
     const form = useSearchTableForm({
         initialValues: {
-            receiveTimeStart: new Date()
+           receiveTimeStart: null
         },
     });
     return    <form onSubmit={form.onSubmit((values) => {
-        values.receiveTimeStart = dayjs(values.receiveTimeStart as Date).format("YYYY-MM-DD")
+        // @ts-ignore
+        if(dayjs(values.receiveTimeStart).isValid()) {
+            // @ts-ignore
+            values.receiveTimeStart = dayjs.tz(values.receiveTimeStart as Date,'Asia/Shanghai').format("YYYY-MM-DD")
+        } else {
+            values.receiveTimeStart = null
+        }
         console.log(values)
     } )} >
         <Grid>
@@ -22,6 +33,10 @@ export function SearchTable() {
                                              inputFormat="YYYY-MM-DD" label="开始时间"
                                              labelFormat="YYYY-MM-DD"/></Col>
             <Col span="content"> <Button type="submit">Submit</Button></Col>
+            <Col span="content">
+            <Button onClick={() =>{form.setValues({
+                receiveTimeStart:null
+            })}}>清空时间</Button> </Col>
         </Grid>
     </form>;
 }

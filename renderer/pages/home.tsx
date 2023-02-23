@@ -8,7 +8,16 @@ import {Tablemodal} from "../modules/modal";
 const ipcRenderer = electron.ipcRenderer;
 import { useDisclosure } from '@mantine/hooks';
 import {SearchTable} from "../modules/SearchTable";
+import dayjs from "dayjs";
+
+const utc =require('dayjs/plugin/utc')
+const timezone = require('dayjs/plugin/timezone')
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
+dayjs.extend(utc)
+dayjs.extend(timezone)
 function Home() {
+
     const onClickwithIpc = () =>{
         ipcRenderer.send('openfile','"D:\\show.txt"')
     }
