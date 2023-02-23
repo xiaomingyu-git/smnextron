@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
-
+import Link from 'next/link';
 import * as electron from "electron";
-import {Button} from "@mantine/core";
+import {Button, Group, Modal, NumberInput} from "@mantine/core";
 import {UserFormProvider, useUserForm} from "../modules/form-context";
 import {Tablemodal} from "../modules/modal";
 const ipcRenderer = electron.ipcRenderer;
