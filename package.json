@@ -16,14 +16,7 @@
     "build:linux": "nextron build --linux"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/server": "^11.10.0",
-    "@mantine/core": "^5.10.4",
-    "@mantine/dates": "^5.10.4",
-    "@mantine/form": "^5.10.4",
-    "@mantine/hooks": "^5.10.4",
-    "@mantine/next": "^5.10.4",
-    "dayjs": "^1.11.7",
+    "antd": "^5.2.2",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0"
   },
@@ -31,7 +24,7 @@
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "electron": "^21.3.3",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "22.11.1",
     "next": "^12.3.4",
     "nextron": "^8.5.0",
     "react": "^18.2.0",
