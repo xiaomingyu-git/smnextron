@@ -16,9 +16,14 @@
     "build:linux": "nextron build --linux"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "antd": "^5.2.2",
     "electron-serve": "^1.1.0",
-    "electron-store": "^8.1.0"
+    "electron-store": "^8.1.0",
+    "react-is": "^18.2.0",
+    "styled-components": "^5.3.6",
+    "zustand": "^4.3.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
